@@ -1,11 +1,68 @@
-# Unity Custom Logger Utility
+# Klazapp Device Inspector
 
-This tool represents a solution for centralized logging management across an entire software project. It enhances the script compilation process to integrate log statements seamlessly, ensuring a consistent and standardized approach to logging. Key features include:
+The Klazapp Device Inspector is a simple Unity utility that allows developers to programmatically check if their application is running on a mobile device, within the Unity Editor, or a simulated mobile environment in the editor. This utility helps in implementing platform-specific logic seamlessly.
 
-1. **Automated Log Integration:** The tool intelligently injects log statements at critical junctures in the codebase during the compilation phase, streamlining the logging process.
+## Features
 
-2. **Configurable Log Severity Levels:** It offers granular control over log verbosity, allowing developers to adjust logging levels (such as debug, info, warning, and error) globally or for specific modules, tailoring the logging output to the needs of different environments and stages of development.
+- **Environment Detection**: Identify whether your application is running on a real device, in the Unity Editor, or a simulated environment within the editor.
+- **Mobile Simulation**: Detect if the editor simulates a mobile device for accurate testing and debugging.
+- **Simple Integration**: Easy to integrate and use within any Unity project to enhance debugging and development workflows.
 
-3. **Uniform Log Formatting:** By enforcing a uniform format for all log entries, the tool guarantees consistency in logging outputs. This format can encompass various elements such as timestamps, severity indicators, and contextual data, thereby facilitating easier log analysis and troubleshooting.
+## Dependencies
 
-Overall, this tool is designed to optimize logging practices, improve code maintainability, and enhance the monitoring capabilities within a software development environment."
+- Unity 2021.3 LTS or newer for enhanced simulator checks.
+
+## Installation
+
+1. Clone or download the Device Inspector package from its repository.
+2. Import the package into your Unity project under the `Assets` directory.
+3. The tool is now ready to use within your scripts.
+
+## Usage
+
+### Checking Device Type
+
+To determine if your application is running on a mobile device or a simulator in the editor, you can use the following method:
+
+```csharp
+bool isMobile = DeviceInspector.IsMobileDevice();
+```
+
+This method returns `true` if the application runs on a mobile device or is simulated as a mobile device in the Unity Editor. It returns `false` if the application is running in the editor in a non-simulated (desktop) mode.
+
+### Advanced Checks
+
+- **Check if Running in Editor**:
+  ```csharp
+  bool inEditor = DeviceInspector.IsApplicationEditor();
+  ```
+
+- **Determine if Running in Simulator**:
+  ```csharp
+  bool inSimulator = DeviceInspector.IsEditorSimulator();
+  ```
+
+- **Check if Running in Game View (as Desktop)**:
+  ```csharp
+  bool inGameView = DeviceInspector.IsEditorGameView();
+  ```
+
+These methods provide more granular control over the runtime environment, allowing for more precise debugging and feature toggling based on the environment.
+
+## Customization
+
+Modify the `DeviceInspector` class to add more specific checks as required by your development process or to handle additional environments like VR or specific consoles.
+
+## Known Issues
+
+- Simulator detection relies on Unity's device type detection which might not always align with actual hardware specifications, especially in custom or complex editor setups.
+
+## To-Do List
+
+- Extend support for additional Unity versions and other development environments.
+- Provide options for logging and detailed environment reports.
+- Improve the detection mechanisms for edge cases and newer Unity features like Device Simulator.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.
