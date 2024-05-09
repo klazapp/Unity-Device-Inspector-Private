@@ -1,40 +1,67 @@
-# Device Inspector
+# Device Inspector for Unity
 
 ## Introduction
-Device Inspector is a utility tool designed to simplify device-related checks in Unity projects. It provides clear distinctions between editor, simulator, and actual device environments, aiding developers in debugging and testing processes.
+
+The Device Inspector utility, developed under the `com.Klazapp.Utility` namespace, provides essential tools to determine the running environment of a Unity application. It identifies whether the application is executing on a mobile device, within the Unity Editor, or in a simulator environment, enhancing the development and testing processes by adapting functionality dynamically based on the environment.
 
 ## Features
-- **Device Environment Detection:** Quickly determines if the application is running on a mobile device, in a simulator, or in the editor.
-- **Editor and Simulator Distinction:** Identifies if the Unity Editor is simulating a mobile environment.
+
+- **Environment Detection:** Easily detect if your application is running on a mobile device, in the Unity Editor, or in a device simulator.
+- **Editor-specific Checks:** Offers methods to differentiate between game view and simulator view within the Unity Editor, facilitating targeted debugging and feature implementation.
+- **Cross-platform Utility:** Useful across various platforms, simplifying the process of writing platform-specific code.
 
 ## Dependencies
-- Unity 2021.1 or newer.
+
+- **Unity Editor:** Utilizes Unity Editor scripts to check and manage editor-specific states and environments.
 
 ## Compatibility
 
-| Platform      | Supported          | Notes                                   |
-|---------------|--------------------|-----------------------------------------|
-| iOS           | :white_check_mark: | Fully supported.                        |
-| Android       | :white_check_mark: | Fully supported.                        |
-| Windows       | :x:                | Not applicable.                         |
-| macOS         | :x:                | Not applicable unless in simulator mode.|
+This package does not rely on specific Unity rendering pipelines or versions and is primarily aimed at improving editor functionality and cross-platform development.
+
+| Compatibility | URP | BRP | HDRP |
+|---------------|-----|-----|------|
+| Compatible    | Yes | Yes | Yes  |
 
 ## Installation
-1. Download the `DeviceInspector` package.
-2. Import it into your Unity project via `Assets > Import Package > Custom Package`.
+
+To install the Device Inspector package:
+
+1. Clone the repository or download the latest release.
+2. Import the `DeviceInspector.cs` script into your Unity project, ideally within an `Editor` folder to segregate editor-only scripts from runtime code.
 
 ## Usage
-To use Device Inspector in your project, you can check the device status by calling:
+
+The `DeviceInspector` class can be used to programmatically determine the running environment of your Unity application, which helps in implementing platform-specific functionalities or debugging. Here are some examples of how to use the class:
+
+### Check if Running on a Mobile Device
+
+Determine if the application is running on a mobile device or an emulator/simulator within the Unity Editor:
+
 ```csharp
 bool isMobile = DeviceInspector.IsMobileDevice();
+Debug.Log("Is this a mobile device or simulator? " + isMobile);
 ```
-This function returns `true` if the application runs on a mobile device or simulates a mobile environment in the editor.
 
-## API Reference
-- `IsMobileDevice()`: Checks if the application is running on a mobile device or in a simulated mobile environment in the editor.
-- `IsApplicationEditor()`: Determines if the application is running in the Unity Editor.
-- `IsEditorSimulator()`: Checks if the Unity Editor is simulating a mobile device.
-- `IsEditorGameView()`: Identifies if the Unity Editor is in game view mode.
+### Differentiate Between Editor Game View and Simulator
+
+Check if the Unity Editor is currently in game view or simulating a mobile device:
+
+```csharp
+bool isSimulator = DeviceInspector.IsEditorSimulator();
+bool isGameView = DeviceInspector.IsEditorGameView();
+
+Debug.Log("Is this running in the simulator? " + isSimulator);
+Debug.Log("Is this running in the game view? " + isGameView);
+```
+
+These checks are especially useful when you need to debug or alter behavior based on whether the application is running directly on a physical device, a simulator, or within the Unity Editor's game view. This functionality can be integrated to adjust UI elements, optimize performance, or apply platform-specific settings dynamically.
+
+## To-Do List (Future Features)
+
+- [ ] Expand device type detection to include additional platforms and environments.
+- [ ] Provide a GUI within the Unity Editor to toggle and visualize environment settings directly.
+- [ ] Integrate more detailed device-specific features and checks.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+This package is available under the MIT License, allowing you to use and modify the tool as needed for both personal and commercial projects.
