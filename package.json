@@ -1,6 +1,6 @@
 {
   "name": "com.klazapp.deviceinspector",
-  "displayName": "Unity Device Inspector Private",
+  "displayName": "Unity Device Inspector Utility Private",
   "version": "1.0.0",
   "unity": "2022.3",
   "description": "Device Inspector utility enhances Unity development by accurately identifying whether an application is running on a mobile device, within the Unity Editor, or a simulator, facilitating precise environment-specific adaptations and debugging.",
