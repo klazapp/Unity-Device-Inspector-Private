@@ -15,12 +15,9 @@ The Device Inspector utility, developed under the `com.Klazapp.Utility` namespac
 - **Unity Editor:** Utilizes Unity Editor scripts to check and manage editor-specific states and environments.
 
 ## Compatibility
-
-This package does not rely on specific Unity rendering pipelines or versions and is primarily aimed at improving editor functionality and cross-platform development.
-
 | Compatibility | URP | BRP | HDRP |
 |---------------|-----|-----|------|
-| Compatible    | Yes | Yes | Yes  |
+| Compatible    | ✔️   | ✔️   | ✔️    |
 
 ## Installation
 
